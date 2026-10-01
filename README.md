@@ -17,8 +17,8 @@ As respostas ficam no `localStorage` do navegador de quem usa (nada vai pra serv
 
 | Branch | Edição | Onde publica | Diferença |
 |---|---|---|---|
-| `main` | amigos | GitHub Pages (repo público) | `js/edicao.js` só declara `EDICAO = "amigos"` |
-| `mateus` | Mateus | Cloudflare Pages, projeto `adm-av1-mateus` | `js/edicao.js` traz `window.MXC`: aplicação de cada tópico na MXC e tarefas MXC por aula |
+| `main` | amigos | GitHub Pages (repo público): https://mateusxavierr.github.io/adm-av1/ | `js/edicao.js` só declara `EDICAO = "amigos"` |
+| `mateus` | Mateus | Cloudflare (Worker de assets `adm-av1-mateus`, o sucessor do Pages): https://adm-av1-mateus.mateus07x.workers.dev | `js/edicao.js` traz `window.MXC`: aplicação de cada tópico na MXC e tarefas MXC por aula |
 
 A **única** diferença entre as branches é `js/edicao.js`. A branch `mateus` **não vai pro repositório público**:
 ela vive no remoto privado `privado`.
@@ -27,7 +27,7 @@ ela vive no remoto privado `privado`.
 
 1. Edita na `main` (`js/conteudo.js`, `js/atividades.js`, `js/app.js`, `css/style.css`), commit, `git push origin main` (o GitHub Pages republica sozinho).
 2. `git checkout mateus && git merge main && git push privado mateus`
-3. `npx wrangler pages deploy . --project-name adm-av1-mateus --branch main --commit-dirty=true`
+3. `git checkout main && ./scripts/publicar-mateus.sh` (sobe só `index.html`, `css/` e `js/` da branch `mateus`)
 
 ### Rodar local
 
